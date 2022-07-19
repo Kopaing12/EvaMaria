@@ -23,10 +23,16 @@ async def start(client, message):
     if message.chat.type in ['group', 'supergroup']:
         buttons = [
             [
-                InlineKeyboardButton('🤖 Updates', url='https://t.me/TeamEvamaria')
+            InlineKeyboardButton('💠 English Series 💠', url='https://t.me/Serieslists'), 
+            InlineKeyboardButton('💠 Thai Series  💠', url='https://t.me/ThaiSeries_MTS')],[
+            InlineKeyboardButton('💠 Chinese Series 💠', url='https://t.me/Chinese_Series_MCS'), 
+            InlineKeyboardButton('💠 Anime Series 💠', url='https://t.me/Anime_Animation_Series')],[
+            InlineKeyboardButton('💠 Korea Series  💠', url='https://t.me/MKSVIPLINK'),
+            InlineKeyboardButton('💠 Request Group 💠', url='https://t.me/MKS_REQUESTGroup')
             ],
             [
-                InlineKeyboardButton('ℹ️ Help', url=f"https://t.me/{temp.U_NAME}?start=help"),
+                InlineKeyboardButton('🛠️ Help', url=f"https://t.me/{temp.U_NAME}?start=help"),
+                InlineKeyboardButton('Close ✗', callback_data="close_data"),
             ]
             ]
         reply_markup = InlineKeyboardMarkup(buttons)
@@ -42,13 +48,18 @@ async def start(client, message):
         await client.send_message(LOG_CHANNEL, script.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention))
     if len(message.command) != 2:
         buttons = [[
-            InlineKeyboardButton('➕ Add Me To Your Groups ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+            InlineKeyboardButton('➕ Add me to your Chat ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
             ],[
-            InlineKeyboardButton('🔍 Search', switch_inline_query_current_chat=''),
-            InlineKeyboardButton('🤖 Updates', url='https://t.me/TeamEvamaria')
-            ],[
-            InlineKeyboardButton('ℹ️ Help', callback_data='help'),
-            InlineKeyboardButton('😊 About', callback_data='about')
+            InlineKeyboardButton('💠 UpDate Channel 💠', url='https://t.me/Movie_By_KP'),     
+            InlineKeyboardButton('♻️ ʜᴇʟᴘ ♻️', callback_data='help')],[
+            InlineKeyboardButton('♻️ ᴀʙᴏᴜᴛ ♻️', callback_data='about'), 
+            InlineKeyboardButton('🔍sᴇᴀʀᴄʜ', switch_inline_query_current_chat='')],[
+            InlineKeyboardButton('💠 English Series 💠', url='https://t.me/Serieslists'), 
+            InlineKeyboardButton('💠 Thai Series  💠', url='https://t.me/ThaiSeries_MTS')],[
+            InlineKeyboardButton('💠 Chinese Series 💠', url='https://t.me/Chinese_Series_MCS'), 
+            InlineKeyboardButton('💠 Anime Series 💠', url='https://t.me/Anime_Animation_Series')],[
+            InlineKeyboardButton('💠 Korea Series  💠', url='https://t.me/MKSVIPLINK'),
+            InlineKeyboardButton('💠 Request Group 💠', url='https://t.me/MKS_REQUESTGroup'),
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_photo(
@@ -62,12 +73,12 @@ async def start(client, message):
         try:
             invite_link = await client.create_chat_invite_link(int(AUTH_CHANNEL))
         except ChatAdminRequired:
-            logger.error("Make sure Bot is admin in Forcesub channel")
+            logger.error("🗣မိတ်‌ဆွေကြည့်ချင်တဲ့ဇာတ်ကားကို ပို့ပေးဖို့အတွက် Join Channel ကို Join ထားဖို့လိုပါတယ်။ Channel လေးကို Join ပြီးရင် Try Again 👈 Tap me လေးကို နှိပ်လိုက်ရင် 👌 ရပါပြီး။ 🙈@KOPAING15 **")
             return
         btn = [
             [
                 InlineKeyboardButton(
-                    "🤖 Join Updates Channel", url=invite_link.invite_link
+                    "💠 Join Channel 💠", url=invite_link.invite_link
                 )
             ]
         ]
@@ -76,9 +87,9 @@ async def start(client, message):
             try:
             	kk, file_id = message.command[1].split("_", 1)
             	pre = 'checksubp' if kk == 'filep' else 'checksub' 
-            	btn.append([InlineKeyboardButton(" 🔄 Try Again", callback_data=f"{pre}#{file_id}")])
+            	btn.append([InlineKeyboardButton(" 🔄 Try Again 👈 Tap me 🥰", callback_data=f"{pre}#{file_id}")])
             except (IndexError, ValueError):
-                btn.append([InlineKeyboardButton(" 🔄 Try Again", url=f"https://t.me/{temp.U_NAME}?start={message.command[1]}")])
+                btn.append([InlineKeyboardButton(" 🔄 Try Again 👈 Tap me 🥰", url=f"https://t.me/{temp.U_NAME}?start={message.command[1]}")])
         await client.send_message(
             chat_id=message.from_user.id,
             text="**Please Join My Updates Channel to use this Bot!**",
@@ -88,13 +99,18 @@ async def start(client, message):
         return
     if len(message.command) == 2 and message.command[1] in ["subscribe", "error", "okay", "help"]:
         buttons = [[
-            InlineKeyboardButton('➕ Add Me To Your Groups ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+            InlineKeyboardButton('➕ Add me to your Chat ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
             ],[
-            InlineKeyboardButton('🔍 Search', switch_inline_query_current_chat=''),
-            InlineKeyboardButton('🤖 Updates', url='https://t.me/TeamEvamaria')
-            ],[
-            InlineKeyboardButton('ℹ️ Help', callback_data='help'),
-            InlineKeyboardButton('😊 About', callback_data='about')
+            InlineKeyboardButton('💠 Update Channel 💠', url='https://t.me/Movie_By_KP'),     
+            InlineKeyboardButton('♻️ ʜᴇʟᴘ ♻️', callback_data='help')],[
+            InlineKeyboardButton('♻️ ᴀʙᴏᴜᴛ ♻️', callback_data='about'), 
+            InlineKeyboardButton('🔍sᴇᴀʀᴄʜ', switch_inline_query_current_chat='')],[
+            InlineKeyboardButton('💠 English Series 💠', url='https://t.me/Serieslists'), 
+            InlineKeyboardButton('💠 Thai Series  💠', url='https://t.me/ThaiSeries_MTS')],[
+            InlineKeyboardButton('💠 Chinese Series 💠', url='https://t.me/Chinese_Series_MCS'), 
+            InlineKeyboardButton('💠 Anime Series 💠', url='https://t.me/Anime_Animation_Series')],[ 
+            InlineKeyboardButton('💠 Korea Series  💠', url='https://t.me/MKSVIPLINK'),
+            InlineKeyboardButton('💠 Request Group 💠', url='https://t.me/MKS_REQUESTGroup'),
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_photo(
@@ -240,6 +256,20 @@ async def start(client, message):
             f_caption=f_caption
     if f_caption is None:
         f_caption = f"{files.file_name}"
+     buttons = [
+        [
+            InlineKeyboardButton('💠 Update Channel 💠', url='https://t.me/Movie_By_KP'),
+            InlineKeyboardButton('💠Movie Zone Group 💠 ', url='https://t.me/+cHMLAeatqKdlNGVl')
+        ],
+        [
+            InlineKeyboardButton('💠 English Series 💠', url='https://t.me/Serieslists'), 
+            InlineKeyboardButton('💠 Thai Series  💠', url='https://t.me/ThaiSeries_MTS')],[
+            InlineKeyboardButton('💠 Chinese Series 💠', url='https://t.me/Chinese_Series_MCS'), 
+            InlineKeyboardButton('💠 Anime Series 💠', url='https://t.me/Anime_Animation_Series')],[ 
+            InlineKeyboardButton('💠 Korea Series  💠', url='https://t.me/MKSVIPLINK'),
+            InlineKeyboardButton('💠 Request Group 💠', url='https://t.me/MKS_REQUESTGroup'),
+        ]
+        ]
     await client.send_cached_media(
         chat_id=message.from_user.id,
         file_id=file_id,
