@@ -259,9 +259,7 @@ async def start(client, message):
      buttons = [
         [
             InlineKeyboardButton('💠 Update Channel 💠', url='https://t.me/Movie_By_KP'),
-            InlineKeyboardButton('💠Movie Zone Group 💠 ', url='https://t.me/+cHMLAeatqKdlNGVl')
-        ],
-        [
+            InlineKeyboardButton('💠Movie Zone Group 💠 ', url='https://t.me/+cHMLAeatqKdlNGVl')],[   
             InlineKeyboardButton('💠 English Series 💠', url='https://t.me/Serieslists'), 
             InlineKeyboardButton('💠 Thai Series  💠', url='https://t.me/ThaiSeries_MTS')],[
             InlineKeyboardButton('💠 Chinese Series 💠', url='https://t.me/Chinese_Series_MCS'), 
