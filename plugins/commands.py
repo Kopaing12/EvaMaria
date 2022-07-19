@@ -256,18 +256,6 @@ async def start(client, message):
             f_caption=f_caption
     if f_caption is None:
         f_caption = f"{files.file_name}"
-     buttons = [
-        [
-            InlineKeyboardButton('💠 Update Channel 💠', url='https://t.me/Movie_By_KP'),
-            InlineKeyboardButton('💠Movie Zone Group 💠 ', url='https://t.me/+cHMLAeatqKdlNGVl')],[   
-            InlineKeyboardButton('💠 English Series 💠', url='https://t.me/Serieslists'), 
-            InlineKeyboardButton('💠 Thai Series  💠', url='https://t.me/ThaiSeries_MTS')],[
-            InlineKeyboardButton('💠 Chinese Series 💠', url='https://t.me/Chinese_Series_MCS'), 
-            InlineKeyboardButton('💠 Anime Series 💠', url='https://t.me/Anime_Animation_Series')],[ 
-            InlineKeyboardButton('💠 Korea Series  💠', url='https://t.me/MKSVIPLINK'),
-            InlineKeyboardButton('💠 Request Group 💠', url='https://t.me/MKS_REQUESTGroup')   
-        ]
-        ]
     await client.send_cached_media(
         chat_id=message.from_user.id,
         file_id=file_id,
