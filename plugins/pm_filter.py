@@ -402,7 +402,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 logger.exception(e)
                 f_caption = f_caption
         if f_caption is None:
-            f_caption = f"{title}"
+            f_caption = f"{files.file_name}"
        buttons = [
             [
                 InlineKeyboardButton('💠 English Series 💠', url='https://t.me/Serieslists'), 
