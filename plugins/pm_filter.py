@@ -403,19 +403,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 f_caption = f_caption
         if f_caption is None:
             f_caption = f"{title}"
-       buttons = [
-            [
-                InlineKeyboardButton('💠 English Series 💠', url='https://t.me/Serieslists'), 
-                InlineKeyboardButton('💠 Thai Series  💠', url='https://t.me/ThaiSeries_MTS')],[
-                InlineKeyboardButton('💠 Chinese Series 💠', url='https://t.me/Chinese_Series_MCS'), 
-                InlineKeyboardButton('💠 Anime Series 💠', url='https://t.me/Anime_Animation_Series')
-            ],
-            [
-                InlineKeyboardButton('💠 Update Channel 💠', url='https://t.me/Movie_By_KP'),
-                InlineKeyboardButton('💠 Korea Series  💠', url='https://t.me/MKSVIPLINK')
-            ]
-            ]
-
         try:
             if AUTH_CHANNEL and not await is_subscribed(client, query):
                 await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
