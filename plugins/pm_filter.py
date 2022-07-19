@@ -64,7 +64,7 @@ async def next_page(bot, query):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"[{get_size(file.file_size)}] {file.file_name}", callback_data=f'files#{file.file_id}'
+                    text=f"🌹 [{get_size(file.file_size)}] {file.file_name}", callback_data=f'files#{file.file_id}'
                 ),
             ]
             for file in files
@@ -73,10 +73,10 @@ async def next_page(bot, query):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"{file.file_name}", callback_data=f'files#{file.file_id}'
+                    text=f"🌹 {file.file_name}", callback_data=f'files#{file.file_id}'
                 ),
                 InlineKeyboardButton(
-                    text=f"{get_size(file.file_size)}",
+                    text=f"🌹 {get_size(file.file_size)}",
                     callback_data=f'files_#{file.file_id}',
                 ),
             ]
@@ -92,7 +92,7 @@ async def next_page(bot, query):
     if n_offset == 0:
         btn.append(
             [InlineKeyboardButton("⏪ BACK", callback_data=f"next_{req}_{key}_{off_set}"),
-             InlineKeyboardButton(f"📃 Pages {math.ceil(int(offset) / 10) + 1} / {math.ceil(total / 10)}",
+             InlineKeyboardButton(f"🔰 Pages 🔰 {math.ceil(int(offset) / 10) + 1} / {math.ceil(total / 10)}",
                                   callback_data="pages")]
         )
     elif off_set is None:
@@ -106,7 +106,17 @@ async def next_page(bot, query):
                 InlineKeyboardButton(f"🗓 {math.ceil(int(offset) / 10) + 1} / {math.ceil(total / 10)}", callback_data="pages"),
                 InlineKeyboardButton("NEXT ⏩", callback_data=f"next_{req}_{key}_{n_offset}")
             ],
-        )
+            )
+        btn.insert(0,
+            [
+                InlineKeyboardButton('💠 Movie Update 💠', url='https://t.me/kpmovielist'),
+                InlineKeyboardButton('💠 Request Group 💠', url='https://t.me/MKS_REQUESTGroup')
+            ])
+
+        btn.insert(0, [
+            InlineKeyboardButton('💠 Update Channel 💠', url='https://t.me/Movie_By_KP'),
+            InlineKeyboardButton('💠 VIP All Series 💠', url='https://t.me/kpautoreply_bot')
+    ])
     try:
         await query.edit_message_reply_markup(
             reply_markup=InlineKeyboardMarkup(btn)
@@ -393,6 +403,75 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 f_caption = f_caption
         if f_caption is None:
             f_caption = f"{title}"
+       buttons = [
+            [
+                InlineKeyboardButton('💠 English Series 💠', url='https://t.me/Serieslists'), 
+                InlineKeyboardButton('💠 Thai Series  💠', url='https://t.me/ThaiSeries_MTS')],[
+                InlineKeyboardButton('💠 Chinese Series 💠', url='https://t.me/Chinese_Series_MCS'), 
+                InlineKeyboardButton('💠 Anime Series 💠', url='https://t.me/Anime_Animation_Series')
+            ],
+            [
+                InlineKeyboardButton('💠 Update Channel 💠', url='https://t.me/Movie_By_KP'),
+                InlineKeyboardButton('💠 Korea Series  💠', url='https://t.me/MKSVIPLINK')
+            ]
+            ]
+
+        try:
+            if AUTH_CHANNEL and not await is_subscribed(client, query):
+                await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
+                return
+            elif settings['botpm']:
+                await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
+                return
+            else:
+                await client.send_cached_media(
+                    chat_id=query.from_user.id,
+                    file_id=file_id,
+                    caption=f_caption,
+                    reply_markup=InlineKeyboardMarkup(buttons),
+                    protect_content=True if ident == "filep" else False 
+                )
+                await query.answer('Check PM, I have sent files in pm', show_alert=False)
+        except UserIsBlocked:
+            await query.answer('Unblock the bot mahn !', show_alert=True)
+        except PeerIdInvalid:
+            await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
+        except Exception as e:
+            await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
+    elif query.data.startswith("checksub"):
+        if AUTH_CHANNEL and not await is_subscribed(client, query):
+            await query.answer("I Like Your Smartness, But Don't Be Oversmart 😒", show_alert=True)
+            return
+        ident, file_id = query.data.split("#")
+        files_ = await get_file_details(file_id)
+        if not files_:
+            return await query.answer('No such file exist.')
+        files = files_[0]
+        title = files.file_name
+        size = get_size(files.file_size)
+        f_caption = files.caption
+        if CUSTOM_FILE_CAPTION:
+            try:
+                f_caption = CUSTOM_FILE_CAPTION.format(file_name='' if title is None else title,
+                                                       file_size='' if size is None else size,
+                                                       file_caption='' if f_caption is None else f_caption)
+            except Exception as e:
+                logger.exception(e)
+                f_caption = f_caption
+        if f_caption is None:
+            f_caption = f"{title}"
+        buttons = [
+            [
+                InlineKeyboardButton('💠 English Series 💠', url='https://t.me/Serieslists'), 
+                InlineKeyboardButton('💠 Thai Series  💠', url='https://t.me/ThaiSeries_MTS')],[
+                InlineKeyboardButton('💠 Chinese Series 💠', url='https://t.me/Chinese_Series_MCS'), 
+                InlineKeyboardButton('💠 Anime Series 💠', url='https://t.me/Anime_Animation_Series')
+            ],
+            [
+                InlineKeyboardButton('💠 Update Channel 💠', url='https://t.me/Movie_By_KP'),
+                InlineKeyboardButton('💠 Korea Series  💠', url='https://t.me/MKSVIPLINK')
+            ]
+            ]
         await query.answer()
         await client.send_cached_media(
             chat_id=query.from_user.id,
@@ -404,13 +483,21 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.answer()
     elif query.data == "start":
         buttons = [[
-            InlineKeyboardButton('➕ Add Me To Your Groups ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
-        ], [
-            InlineKeyboardButton('🔍 Search', switch_inline_query_current_chat=''),
-            InlineKeyboardButton('🤖 Updates', url='https://t.me/TeamEvamaria')
-        ], [
-            InlineKeyboardButton('ℹ️ Help', callback_data='help'),
-            InlineKeyboardButton('😊 About', callback_data='about')
+            InlineKeyboardButton('➕ Add me to your Chat ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+            ],[
+            InlineKeyboardButton('⭕️ Help', callback_data='help'),
+            InlineKeyboardButton('About ⭕️', callback_data='about')
+            ],[
+            InlineKeyboardButton('💠 Update Channel 💠', url='https://t.me/Movie_By_KP')
+            ],[
+            InlineKeyboardButton('💠 English Series 💠', url='https://t.me/Serieslists'), 
+            InlineKeyboardButton('💠 Thai Series  💠', url='https://t.me/ThaiSeries_MTS')],[
+            InlineKeyboardButton('💠 Chinese Series 💠', url='https://t.me/Chinese_Series_MCS'), 
+            InlineKeyboardButton('💠 Anime Series 💠', url='https://t.me/Anime_Animation_Series')],[
+            InlineKeyboardButton('💠 Korea Series  💠', url='https://t.me/MKSVIPLINK'),
+            InlineKeyboardButton('💠 Request Group 💠', url='https://t.me/MKS_REQUESTGroup')
+            ],[
+            InlineKeyboardButton('❌ Close the Menu ❌', callback_data='close_data')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
@@ -429,6 +516,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ], [
             InlineKeyboardButton('🏠 Home', callback_data='start'),
             InlineKeyboardButton('🔮 Status', callback_data='stats')
+        ], [
+            InlineKeyboardButton('💠 English Series 💠', url='https://t.me/Serieslists'), 
+            InlineKeyboardButton('💠 Thai Series  💠', url='https://t.me/ThaiSeries_MTS')],[
+            InlineKeyboardButton('💠 Chinese Series 💠', url='https://t.me/Chinese_Series_MCS'), 
+            InlineKeyboardButton('💠 Anime Series 💠', url='https://t.me/Anime_Animation_Series')],[
+            InlineKeyboardButton('💠 Korea Series  💠', url='https://t.me/MKSVIPLINK'),
+            InlineKeyboardButton('💠 Request Group 💠', url='https://t.me/MKS_REQUESTGroup'),
+            ],[
+            InlineKeyboardButton('💠 VIP All Series  💠', url='https://t.me/Kpautoreply_bot'),
+            InlineKeyboardButton('« Back', callback_data='start'),
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
@@ -443,6 +540,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ], [
             InlineKeyboardButton('🏠 Home', callback_data='start'),
             InlineKeyboardButton('🔐 Close', callback_data='close_data')
+        ],[
+            InlineKeyboardButton('💠 English Series 💠', url='https://t.me/Serieslists'), 
+            InlineKeyboardButton('💠 Thai Series  💠', url='https://t.me/ThaiSeries_MTS')],[
+            InlineKeyboardButton('💠 Chinese Series 💠', url='https://t.me/Chinese_Series_MCS'), 
+            InlineKeyboardButton('💠 Anime Series 💠', url='https://t.me/Anime_Animation_Series')],[
+            InlineKeyboardButton('💠 Korea Series  💠', url='https://t.me/MKSVIPLINK'),
+            InlineKeyboardButton('💠 Request Group 💠', url='https://t.me/MKS_REQUESTGroup'),
+            ],[
+            InlineKeyboardButton('💠 VIP All Series  💠', url='https://t.me/Kpautoreply_bot'),
+            InlineKeyboardButton('« Back', callback_data='start'),
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
@@ -641,7 +748,7 @@ async def auto_filter(client, msg, spoll=False):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"[{get_size(file.file_size)}] {file.file_name}", callback_data=f'{pre}#{file.file_id}'
+                    text=f"🔵 [{get_size(file.file_size)}] {file.file_name}", callback_data=f'{pre}#{file.file_id}'
                 ),
             ]
             for file in files
@@ -650,11 +757,11 @@ async def auto_filter(client, msg, spoll=False):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"{file.file_name}",
+                    text=f"🔵 {file.file_name}",
                     callback_data=f'{pre}#{file.file_id}',
                 ),
                 InlineKeyboardButton(
-                    text=f"{get_size(file.file_size)}",
+                    text=f"🔵 {get_size(file.file_size)}",
                     callback_data=f'{pre}#{file.file_id}',
                 ),
             ]
