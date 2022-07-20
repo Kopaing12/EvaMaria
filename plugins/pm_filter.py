@@ -792,7 +792,7 @@ async def auto_filter(client, msg, spoll=False):
             **locals()
         )
     else:
-        cap = f"<b>Hello  <i><b>{message.from_user.mention}</b>\nကျနော်ရှာတွေ့တာပြပေးထားပါတယ်ခင်ဗျာ\n\n 🎬 ဇာတ်ကားနာမည်:</b> {search}\n</b>\n<b>🙋  တောင်းဆိုသူ  : <i><b>{message.from_user.mention}</b>\n\n<b>🔎   ရှာပေးသူ     : <i><b>{message.chat.title}</b>\n\n📤 Uploaded By : Ko Paing <b>\n<a href='https://t.me/Movie_By_KP'>© MKS & KP Channel</a></b></s>"
+        cap = f"<b>🔴 Hello {message.from_user.mention} ,\nကျနော်ရှာတွေ့တာပြပေးထားပါတယ် \n🟠 </b> <a href={url}>{title}</a> [{year}] — <b>{kind}</b>\n<b>🟡 Frist Date:</b> <a href={url}/releaseinfo>{release_date}</a>\n<b>🟢 Rating:</b> <a href={url}/ratings>{rating} / 10</a>\n\n<b>🟤 Languages #{languages}</b>\n<b>⚪️ Genres:  </b> #{genres}\n\n<b>⚫️ Director:</b>#{director}\n<\n<b>🟣 Request By : <i><b>{message.from_user.mention}</b>\n\n</b>🔵 Uploaded By   : Ko Paing 🥰 <b>\n</b><a href='https://t.me/Movie_By_KP'>© MKS & KP Channel</a>\n\n</b><a href='https://t.me/kpautoreply_bot'>© VIP All Series</b></i></s>"
     if imdb and imdb.get('poster'):
         try:
             await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024],
