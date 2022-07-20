@@ -92,7 +92,7 @@ async def start(client, message):
                 btn.append([InlineKeyboardButton("🔄 Try Again 👈 Tap me 🥰", callback_data=f"{pre}#{file_id}")])
         await client.send_message(
             chat_id=message.from_user.id,
-            text="**🗣 မိတ်‌ဆွေကြည့်ချင်တဲ့ဇာတ်ကားကို ပို့ပေးဖို့အတွက် 👉🏻 Join Channel 👈🏻 ကို Join ထားဖို့လိုပါတယ်။ Channel လေးကို Join ပြီးရင် 🔄 Try Again 👈 Tap me 🥰 လေးကို နှိပ်ပါ ပြီးရင် start လေးပြန်ပေါ်လာတာကို နှိပ်လိုက်ရင် 👌 ရပါပြီး။ \n\n🙈@KOPAING15 **",
+            text="**🗣 မိတ်‌ဆွေကြည့်ချင်တဲ့ဇာတ်ကားကို ပို့ပေးဖို့အတွက် 👉🏻 Join Channel 👈🏻 ကို Join ထားဖို့လိုပါတယ်။ Channel လေးကို  Join ပြီးရင်  🔄 Try Again 👈 Tap me 🥰 လေးကို နှိပ်ပါ ပြီးရင် start လေးပြန်ပေါ်လာတာကို နှိပ်လိုက်ရင် 👌 ရပါပြီး။ \n\n🙈@KOPAING15 **",
             reply_markup=InlineKeyboardMarkup(btn),
             parse_mode="markdown"
             )
