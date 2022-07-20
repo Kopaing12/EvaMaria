@@ -64,7 +64,7 @@ async def next_page(bot, query):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"🌹 [{get_size(file.file_size)}] {file.file_name}", callback_data=f'files#{file.file_id}'
+                    text=f"🟣 {file.file_name} [{get_size(file.file_size)}]", callback_data=f'files#{file.file_id}'
                 ),
             ]
             for file in files
@@ -73,10 +73,10 @@ async def next_page(bot, query):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"🌹 {file.file_name}", callback_data=f'files#{file.file_id}'
+                    text=f"🟣 {file.file_name}", callback_data=f'files#{file.file_id}'
                 ),
                 InlineKeyboardButton(
-                    text=f"🌹 {get_size(file.file_size)}",
+                    text=f"🟣 {get_size(file.file_size)}",
                     callback_data=f'files_#{file.file_id}',
                 ),
             ]
@@ -93,20 +93,26 @@ async def next_page(bot, query):
         btn.append(
             [InlineKeyboardButton("⏪ BACK", callback_data=f"next_{req}_{key}_{off_set}"),
              InlineKeyboardButton(f"🔰 Pages 🔰 {math.ceil(int(offset) / 10) + 1} / {math.ceil(total / 10)}",
-                                  callback_data="pages")]
-        )
+                                  callback_data="pages")],[
+             InlineKeyboardButton('💠 Update Channel 💠', url='https://t.me/Movie_By_KP'),
+             InlineKeyboardButton('💠 VIP All Series 💠', url='https://t.me/kpautoreply_bot')
+        ])
     elif off_set is None:
         btn.append(
             [InlineKeyboardButton(f"🗓 {math.ceil(int(offset) / 10) + 1} / {math.ceil(total / 10)}", callback_data="pages"),
-             InlineKeyboardButton("NEXT ⏩", callback_data=f"next_{req}_{key}_{n_offset}")])
+             InlineKeyboardButton("NEXT ⏩", callback_data=f"next_{req}_{key}_{n_offset}")],[
+             InlineKeyboardButton('💠 Update Channel 💠', url='https://t.me/Movie_By_KP'),
+             InlineKeyboardButton('💠 VIP All Series 💠', url='https://t.me/kpautoreply_bot')])
     else:
         btn.append(
             [
                 InlineKeyboardButton("⏪ BACK", callback_data=f"next_{req}_{key}_{off_set}"),
                 InlineKeyboardButton(f"🗓 {math.ceil(int(offset) / 10) + 1} / {math.ceil(total / 10)}", callback_data="pages"),
                 InlineKeyboardButton("NEXT ⏩", callback_data=f"next_{req}_{key}_{n_offset}")
-            ],
-            )
+            ],[
+            InlineKeyboardButton('💠 Update Channel 💠', url='https://t.me/Movie_By_KP'),
+            InlineKeyboardButton('💠 VIP All Series 💠', url='https://t.me/kpautoreply_bot')
+            ])
         btn.insert(0,
             [
                 InlineKeyboardButton('💠 Movie Update 💠', url='https://t.me/kpmovielist'),
@@ -510,7 +516,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "about":
         buttons = [[
-            InlineKeyboardButton('🤖 Updates', url='https://t.me/TeamEvamaria'),
+            InlineKeyboardButton('🤖 Updates', url='https://t.me/MKSVIPLINK'),
             InlineKeyboardButton('♥️ Source', callback_data='source')
         ], [
             InlineKeyboardButton('🏠 Home', callback_data='start'),
@@ -723,7 +729,7 @@ async def auto_filter(client, msg, spoll=False):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"🔵 [{get_size(file.file_size)}] {file.file_name}", callback_data=f'{pre}#{file.file_id}'
+                    text=f"🔵 {file.file_name} [{get_size(file.file_size)}]", callback_data=f'{pre}#{file.file_id}'
                 ),
             ]
             for file in files
@@ -749,7 +755,9 @@ async def auto_filter(client, msg, spoll=False):
         req = message.from_user.id if message.from_user else 0
         btn.append(
             [InlineKeyboardButton(text=f"🗓 1/{math.ceil(int(total_results) / 10)}", callback_data="pages"),
-             InlineKeyboardButton(text="NEXT ⏩", callback_data=f"next_{req}_{key}_{offset}")]
+             InlineKeyboardButton(text="NEXT ⏩", callback_data=f"next_{req}_{key}_{offset}")],[
+             InlineKeyboardButton('💠 VIP All Series 💠', url='https://t.me/Kpautoreply_bot'),
+             InlineKeyboardButton('💠 Update Channel 💠', url='https://t.me/Movie_By_KP')]
         )
     else:
         btn.append(
