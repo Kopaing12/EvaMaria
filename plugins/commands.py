@@ -92,7 +92,7 @@ async def start(client, message):
                 btn.append([InlineKeyboardButton(" 🔄 Try Again 👈 Tap me 🥰", url=f"https://t.me/{temp.U_NAME}?start={message.command[1]}")])
         await client.send_message(
             chat_id=message.from_user.id,
-            text="**Please Join My Updates Channel to use this Bot!**",
+            text="**🗣မိတ်‌ဆွေကြည့်ချင်တဲ့ဇာတ်ကားကို ပို့ပေးဖို့အတွက် Join Channel ကို Join ထားဖို့လိုပါတယ်။ Channel လေးကို Join ပြီးရင် Try Again 👈 Tap me လေးကို နှိပ်လိုက်ရင် 👌 ရပါပြီး။ 🙈@KOPAING15 ****",
             reply_markup=InlineKeyboardMarkup(btn),
             parse_mode="markdown"
             )
@@ -256,13 +256,27 @@ async def start(client, message):
             f_caption=f_caption
     if f_caption is None:
         f_caption = f"{files.file_name}"
+    buttons = [
+        [
+            InlineKeyboardButton('💠 Update Channel 💠', url='https://t.me/Movie_By_KP'),
+            InlineKeyboardButton('💠Movie Zone Group 💠 ', url='https://t.me/+cHMLAeatqKdlNGVl')
+        ],
+        [
+            InlineKeyboardButton('💠 English Series 💠', url='https://t.me/Serieslists'), 
+            InlineKeyboardButton('💠 Thai Series  💠', url='https://t.me/ThaiSeries_MTS')],[
+            InlineKeyboardButton('💠 Chinese Series 💠', url='https://t.me/Chinese_Series_MCS'), 
+            InlineKeyboardButton('💠 Anime Series 💠', url='https://t.me/Anime_Animation_Series')],[ 
+            InlineKeyboardButton('💠 Korea Series  💠', url='https://t.me/MKSVIPLINK'),
+            InlineKeyboardButton('💠 Request Group 💠', url='https://t.me/MKS_REQUESTGroup'),
+        ]
+        ]
     await client.send_cached_media(
         chat_id=message.from_user.id,
         file_id=file_id,
         caption=f_caption,
+        reply_markup=InlineKeyboardMarkup(buttons),
         protect_content=True if pre == 'filep' else False,
-        )
-                    
+        )            
 
 @Client.on_message(filters.command('channel') & filters.user(ADMINS))
 async def channel_info(bot, message):
