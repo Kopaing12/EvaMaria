@@ -811,13 +811,13 @@ async def auto_filter(client, msg, spoll=False):
             await asyncio.sleep(36000)
             await fek.delete()
             await msg.delete()
-    else:
-        fuk = await message.reply_photo(photo="https://telegra.ph/file/24785052b59f814dfce7e.png", caption=cap, reply_to_message_id=reply_id, reply_markup=InlineKeyboardMarkup(btn))
-        await asyncio.sleep(36000)
-        await fuk.delete()
-        await msg.delete()
-    if spoll:
-        await msg.message.delete()
+        else:
+            fuk = await message.reply_photo(photo="https://telegra.ph/file/24785052b59f814dfce7e.png", caption=cap, reply_to_message_id=reply_id, reply_markup=InlineKeyboardMarkup(btn))
+            await asyncio.sleep(36000)
+            await fuk.delete()
+            await msg.delete()
+        if spoll:
+            await msg.message.delete()
 
 
 async def advantage_spell_chok(msg):
