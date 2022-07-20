@@ -93,16 +93,11 @@ async def next_page(bot, query):
         btn.append(
             [InlineKeyboardButton("⏪ BACK", callback_data=f"next_{req}_{key}_{off_set}"),
              InlineKeyboardButton(f"🔰 Pages 🔰 {math.ceil(int(offset) / 10) + 1} / {math.ceil(total / 10)}",
-                                  callback_data="pages")],[
-             InlineKeyboardButton('💠 Update Channel 💠', url='https://t.me/Movie_By_KP'),
-             InlineKeyboardButton('💠 VIP All Series 💠', url='https://t.me/kpautoreply_bot')
-        ])
+                                  callback_data="pages")])
     elif off_set is None:
         btn.append(
             [InlineKeyboardButton(f"🗓 {math.ceil(int(offset) / 10) + 1} / {math.ceil(total / 10)}", callback_data="pages"),
-             InlineKeyboardButton("NEXT ⏩", callback_data=f"next_{req}_{key}_{n_offset}")],[
-             InlineKeyboardButton('💠 Update Channel 💠', url='https://t.me/Movie_By_KP'),
-             InlineKeyboardButton('💠 VIP All Series 💠', url='https://t.me/kpautoreply_bot')])
+             InlineKeyboardButton("NEXT ⏩", callback_data=f"next_{req}_{key}_{n_offset}")])
     else:
         btn.append(
             [
