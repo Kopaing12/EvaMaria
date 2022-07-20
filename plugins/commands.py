@@ -83,7 +83,7 @@ async def start(client, message):
             ]
         ]
 
-          if message.command[1] != "subscribe":
+    if message.command[1] != "subscribe":
             kk, file_id = message.command[1].split("_", 1)
             pre = 'checksubp' if kk == 'filep' else 'checksub' 
             btn.append([InlineKeyboardButton("🔄 Try Again 👈 Tap me 🥰", callback_data=f"{pre}#{file_id}")])
