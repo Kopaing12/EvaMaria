@@ -41,7 +41,7 @@ async def give_filter(client, message):
 @Client.on_callback_query(filters.regex(r"^next"))
 async def next_page(bot, query):
     ident, req, key, offset = query.data.split("_")
-     ad_user = query.from_user.id
+    ad_user = query.from_user.id
     if int(ad_user) in ADMINS:
         pass
     if int(req) not in [query.from_user.id, 0]:
