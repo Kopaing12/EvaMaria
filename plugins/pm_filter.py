@@ -42,7 +42,7 @@ async def give_filter(client, message):
 async def next_page(bot, query):
     ident, req, key, offset = query.data.split("_")
     if int(req) not in [query.from_user.id, 0]:
-        return await query.answer("oKda", show_alert=True)
+        return await query.answer("နည်းပညာများအရ တစ်ခြား Member ရှာထားသော ဇာတ်ကားများကို နှိပ်ခွင့်မရှိပါ။ မိတ်ဆွေကိုယ်တိုင် Group တွင်ဇာတ်ကားနာမည်အသစ်ရိုက်ရှာပေးပါ။ ကျေးဇူးပါခင်ဗျာ။ ", show_alert=True)
     try:
         offset = int(offset)
     except:
