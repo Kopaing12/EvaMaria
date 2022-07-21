@@ -45,7 +45,7 @@ async def next_page(bot, query):
     if int(ad_user) in ADMINS:
         pass
     if int(req) not in [query.from_user.id, 0]:
-        return await query.answer("နည်းပညာများအရ တစ်ခြား Member ရှာထားသော ဇာတ်ကားများကို နှိပ်ခွင့်မရှိပါ။ မိတ်ဆွေကိုယ်တိုင် Group တွင်ဇာတ်ကားနာမည်အသစ်ရိုက်ရှာပေးပါ။ ကျေးဇူးပါခင်ဗျာ။ ", show_alert=True)
+        return await query.answer("နည်းပညာများအရ တစ်ခြား Member ရှာထားသော ဇာတ်ကားများကို နှိပ်ခွင့်မရှိပါ။ မိတ်ဆွေကိုယ်တိုင် Group တွင်ဇာတ်ကားနာမည်အသစ်ရိုက်ရှာပေးပါ။ ကျေးဇူးပါခင်ဗျာ။ \n\n@KOPAING15 ", show_alert=True)
     try:
         offset = int(offset)
     except:
