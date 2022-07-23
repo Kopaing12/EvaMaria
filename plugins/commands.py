@@ -50,7 +50,7 @@ async def start(client, message):
         buttons = [[
             InlineKeyboardButton('➕ Add me to your Chat ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
             ],[
-            InlineKeyboardButton('💠 UpDate Channel 💠', url='https://t.me/Movie_By_KP'),     
+            InlineKeyboardButton('💠 UpDate Channel 💠', url='https://t.me/Movie_Zone_KP/3'),     
             InlineKeyboardButton('♻️ ʜᴇʟᴘ ♻️', callback_data='help')],[
             InlineKeyboardButton('♻️ ᴀʙᴏᴜᴛ ♻️', callback_data='about'), 
             InlineKeyboardButton('🔍sᴇᴀʀᴄʜ', switch_inline_query_current_chat='')],[
@@ -101,7 +101,7 @@ async def start(client, message):
         buttons = [[
             InlineKeyboardButton('➕ Add me to your Chat ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
             ],[
-            InlineKeyboardButton('💠 Update Channel 💠', url='https://t.me/Movie_By_KP'),     
+            InlineKeyboardButton('💠 Update Channel 💠', url='https://t.me/Movie_Zone_KP/3'),     
             InlineKeyboardButton('♻️ ʜᴇʟᴘ ♻️', callback_data='help')],[
             InlineKeyboardButton('♻️ ᴀʙᴏᴜᴛ ♻️', callback_data='about'), 
             InlineKeyboardButton('🔍sᴇᴀʀᴄʜ', switch_inline_query_current_chat='')],[
@@ -258,7 +258,7 @@ async def start(client, message):
         f_caption = f"{files.file_name}"
     buttons = [
         [
-            InlineKeyboardButton('💠 Update Channel 💠', url='https://t.me/Movie_By_KP'),
+            InlineKeyboardButton('💠 Update Channel 💠', url='https://t.me/Movie_Zone_KP/3'),
             InlineKeyboardButton('💠Movie Zone Group 💠 ', url='https://t.me/+cHMLAeatqKdlNGVl')
         ],
         [
