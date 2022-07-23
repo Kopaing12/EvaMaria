@@ -109,7 +109,7 @@ async def next_page(bot, query):
                 InlineKeyboardButton(f"🗓 {math.ceil(int(offset) / 10) + 1} / {math.ceil(total / 10)}", callback_data="pages"),
                 InlineKeyboardButton("NEXT ⏩", callback_data=f"next_{req}_{key}_{n_offset}")
             ],[
-            InlineKeyboardButton('💠 Update Channel 💠', url='https://t.me/Movie_By_KP'),
+            InlineKeyboardButton('💠 Update Channel 💠', url='https://t.me/Movie_Zone_KP/3'),
             InlineKeyboardButton('💠 VIP All Series 💠', url='https://t.me/kpautoreply_bot')
             ])
         btn.insert(0,
@@ -119,7 +119,7 @@ async def next_page(bot, query):
             ])
 
         btn.insert(0, [
-            InlineKeyboardButton('💠 Update Channel 💠', url='https://t.me/Movie_By_KP'),
+            InlineKeyboardButton('💠 Update Channel 💠', url='https://t.me/Movie_Zone_KP/3'),
             InlineKeyboardButton('💠 VIP All Series 💠', url='https://t.me/kpautoreply_bot')
     ])
     try:
@@ -468,7 +468,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('⭕️ Help', callback_data='help'),
             InlineKeyboardButton('About ⭕️', callback_data='about')
             ],[
-            InlineKeyboardButton('💠 Update Channel 💠', url='https://t.me/Movie_By_KP')
+            InlineKeyboardButton('💠 Update Channel 💠', url='https://t.me/Movie_Zone_KP/3')
             ],[
             InlineKeyboardButton('💠 English Series 💠', url='https://t.me/Serieslists'), 
             InlineKeyboardButton('💠 Thai Series  💠', url='https://t.me/ThaiSeries_MTS')],[
